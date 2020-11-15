@@ -7,7 +7,7 @@ services:
         container_name: badefass-mongo
         ports:
             - "27017:27017"
-        volume:
+        volumes:
             - badefass-mongo/data
     backend:
         build: .
