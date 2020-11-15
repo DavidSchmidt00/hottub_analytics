@@ -1,0 +1,66 @@
+openapi: 3.0.0
+info:
+  title: Badefass Analyse API
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+paths:
+  /temperatur:
+    post:
+      summary: post current temperatur measurment
+      operationId: post_temperatur
+      requestBody:
+        description: Temperature to add
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Temperature'
+      responses:
+        "200":
+          description: added
+        "400":
+          description: bad input parameter
+        "500":
+          description: server error
+      x-openapi-router-controller: server.controllers.default_controller
+  /heizen:
+    post:
+      summary: post number of wood logs you put onto the fire
+      operationId: post_heizen
+      requestBody:
+        description: store heating process
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Heating'
+      responses:
+        "200":
+          description: added
+        "400":
+          description: bad input parameter
+        "500":
+          description: server error
+      x-openapi-router-controller: server.controllers.default_controller
+components:
+  schemas:
+    Temperature:
+      required:
+      - temperature
+      type: object
+      properties:
+        temperature:
+          type: number
+          example: 35.7
+    Heating:
+      required:
+      - inital_heat
+      - logs
+      type: object
+      properties:
+        logs:
+          type: number
+          example: 2
+        inital_heat:
+          type: boolean
+
