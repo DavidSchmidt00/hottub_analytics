@@ -8,11 +8,14 @@ services:
         ports:
             - "27017:27017"
         volumes:
-            - badefass-mongo/data
+            - badefass-mongo:/data/db
     backend:
         build: .
+        image: badefass-backend
         container_name: badefass-backend
         ports:
             - "8080:8080"   
         links:
             - database
+volumes:
+    badefass-mongo:
