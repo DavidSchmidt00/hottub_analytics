@@ -1,0 +1,16 @@
+version: "3"
+services:
+    database:
+        image: mangoraft/mongodb-arm:latest
+        environment:
+         - AUTH=no
+        container_name: badefass-mongo
+        ports:
+            - "27017:27017"
+    backend:
+        build: .
+        container_name: badefass-backend
+        ports:
+            - "8080:8080"   
+        links:
+            - database
