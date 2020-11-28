@@ -1,6 +1,6 @@
 # hottub_analytics
 
-Flutter App and Flask Backend to log the temperature and heating operations of a hottub (heated with wood).
+Flutter App and Flask Backend to log the temperature and heating operations of a hottub (heated with wood).  
 Data is stored in MongoDB.
 
 ## Todos:
