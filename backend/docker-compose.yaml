@@ -9,6 +9,8 @@ services:
             - "27017:27017"
         volumes:
             - badefass-mongo:/data/db
+        restart: always
+        command: bash -c "mongod --repair && mongod"
     backend:
         build: .
         image: badefass-backend
@@ -17,5 +19,6 @@ services:
             - "8080:8080"   
         links:
             - database
+        restart: always
 volumes:
     badefass-mongo:
